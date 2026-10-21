@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Tanushka ✨</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Trebuchet MS", sans-serif;
+  background: #090d20;
+  color: white;
+  overflow: hidden;
+}
+
+.scene {
+  min-height: 100svh;
+  width: 100%;
+  display: none;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 24px;
+}
+
+.scene.active {
+  display: flex;
+  animation: sceneIn 1s ease both;
+}
+
+#intro {
+  background: radial-gradient(circle at 50% 35%, #5144a6, #17152f 55%, #070b18);
+}
+
+#reveal {
+  background: linear-gradient(#f8a6cb, #8e8bd9 60%, #29305c);
+}
+
+#wish {
+  background: linear-gradient(#151a38, #473d83, #e99bc6);
+}
+
+#final {
+  background: radial-gradient(circle, #5543a5, #14162f 65%, #060914);
+}
+
+@keyframes sceneIn {
+  from { opacity: 0; transform: scale(1.04); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  text-shadow: 0 0 24px #ff9ed5;
+  line-height: 1.15;
+}
+
+p {
+  font-size: clamp(1rem, 3.8vw, 1.25rem);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-top: 18px;
+}
+
+button, a.button {
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 25px;
+  margin-top: 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #211638;
+  background: linear-gradient(100deg, #ffd5ef, #ffffff);
+  box-shadow: 0 0 25px #ff9ed5;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .2s;
+  z-index: 5;
+}
+
+button:active { transform: scale(.94); }
+
+.stars, .confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  color: white;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .2; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+.moon {
+  position: absolute;
+  top: 10%;
+  right: 12%;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: #fff0cc;
+  box-shadow: 0 0 50px #fff0cc;
+}
+
+.character {
+  position: relative;
+  width: 130px;
+  height: 205px;
+  margin: 12px auto 22px;
+  animation: float 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.head {
+  width: 82px;
+  height: 88px;
+  border-radius: 45% 45% 43% 43%;
+  background: #ffcfad;
+  border: 2px solid #30213e;
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  z-index: 2;
+}
+
+.hair {
+  position: absolute;
+  top: -8px;
+  left: -4px;
+  width: 86px;
+  height: 46px;
+  background: #211b32;
+  border-radius: 60% 50% 20% 25%;
+  clip-path: polygon(0 0,100% 0,100% 75%,83% 50%,72% 100%,58% 55%,43% 92%,28% 55%,14% 85%,10% 45%,0 70%);
+}
+
+.eye {
+  position: absolute;
+  top: 43px;
+  width: 13px;
+  height: 19px;
+  background: #392b52;
+  border-radius: 50%;
+}
+
+.eye.left { left: 18px; }
+.eye.right { right: 18px; }
+
+.eye::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  margin: 3px;
+}
+
+.blush {
+  position: absolute;
+  top: 60px;
+  width: 15px;
+  height: 7px;
+  background: #fa8ca8;
+  opacity: .65;
+  border-radius: 50%;
+}
+
+.blush.left { left: 7px; }
+.blush.right { right: 7px; }
+
+.mouth {
+  position: absolute;
+  width: 15px;
+  height: 8px;
+  left: 31px;
+  top: 68px;
+  border-bottom: 2px solid #a94b69;
+  border-radius: 50%;
+}
+
+.body {
+  position: absolute;
+  top: 105px;
+  left: 26px;
+  width: 78px;
+  height: 74px;
+  background: #b7b5ff;
+  border: 2px solid #30213e;
+  border-radius: 23px 23px 12px 12px;
+}
+
+.arm {
+  position: absolute;
+  top: 113px;
+  width: 20px;
+  height: 65px;
+  border: 2px solid #30213e;
+  border-radius: 15px;
+  background: #ffcfad;
+  transform-origin: top center;
+}
+
+.arm.left {
+  left: 15px;
+  transform: rotate(17deg);
+}
+
+.arm.right {
+  right: 15px;
+  transform: rotate(-17deg);
+}
+
+.leg {
+  position: absolute;
+  top: 169px;
+  width: 22px;
+  height: 34px;
+  background: #29233f;
+  border-radius: 10px;
+}
+
+.leg.left { left: 40px; }
+.leg.right { right: 40px; }
+
+.girl .hair {
+  height: 67px;
+  width: 100px;
+  left: -9px;
+  top: -7px;
+  background: #6c315e;
+  border-radius: 50% 50% 25% 25%;
+  clip-path: polygon(0 0,100% 0,100% 100%,85% 85%,79% 45%,66% 76%,54% 45%,40% 75%,25% 45%,12% 100%,0 100%);
+}
+
+.girl .body {
+  background: #ff8fc6;
+}
+
+.girl .leg {
+  background: #41305f;
+}
+
+.boy .body {
+  background: #83d6f5;
+}
+
+.boy .hair {
+  background: #202b48;
+}
+
+.dialogue {
+  background: rgba(15, 15, 42, .72);
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 18px;
+  padding: 18px 22px;
+  max-width: 500px;
+  min-height: 80px;
+  box-shadow: 0 0 25px #f99bdb55;
+}
+
+.name {
+  color: #ffe0f5;
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  letter-spacing: 4px;
+  animation: nameGlow 2s infinite alternate;
+}
+
+@keyframes nameGlow {
+  from { text-shadow: 0 0 10px #ff85d5; }
+  to { text-shadow: 0 0 35px #fff, 0 0 65px #ff72c9; }
+}
+
+.gift {
+  font-size: 100px;
+  cursor: pointer;
+  animation: giftBeat 1.2s infinite;
+  filter: drop-shadow(0 0 22px #ff83d1);
+  z-index: 3;
+}
+
+@keyframes giftBeat {
+  0%,100% { transform: scale(1) rotate(-4deg); }
+  50% { transform: scale(1.12) rotate(4deg); }
+}
+
+.hero {
+  position: absolute;
+  top: -180px;
+  left: -160px;
+  font-size: 70px;
+  z-index: 3;
+  transform: rotate(25deg);
+}
+
+.hero.fly {
+  animation: heroFly 2s ease-in forwards;
+}
+
+@keyframes heroFly {
+  0% { top: -160px; left: -130px; transform: rotate(25deg) scale(.7); }
+  65% { top: 25%; left: 55%; transform: rotate(10deg) scale(1.1); }
+  100% { top: 35%; left: 70%; transform: rotate(-15deg) scale(.8); }
+}
+
+.web {
+  position: absolute;
+  top: 0;
+  left: 18%;
+  width: 2px;
+  height: 0;
+  background: #fff;
+  box-shadow: 0 0 6px white;
+}
+
+.web.fly {
+  animation: webDrop 1.7s ease-out forwards;
+}
+
+@keyframes webDrop {
+  to { height: 35vh; }
+}
+
+.confetti span {
+  position: absolute;
+  top: -20px;
+  animation: fall 4s linear forwards;
+  font-size: 22px;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(700deg); }
+}
+
+.small {
+  opacity: .85;
+  font-size: .9rem;
+}
+
+#surpriseText {
+  display: none;
+  animation: sceneIn 1s ease both;
+}
+
+#surpriseText.show {
+  display: block;
+}
+
+#customLink {
+  display: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 12px;
+  opacity: .6;
+  font-size: 11px;
+}
+</style>
+</head>
+
+<body>
+
+<section class="scene active" id="intro">
+  <div class="stars" id="stars"></div>
+  <div class="moon"></div>
+  <p>✦ A little anime story, made just for you ✦</p>
+  <h1>Some days are<br>made of magic.</h1>
+  <p>And today is one of them...</p>
+  <button onclick="goTo('reveal')">Begin the story ✨</button>
+  <footer>Made with love ♡</footer>
+</section>
+
+<section class="scene" id="reveal">
+  <div class="stars" id="stars2"></div>
+  <p>A special day. A special person.</p>
+  <h1 class="name">Tanushka</h1>
+  <div class="character girl">
+    <div class="head">
+      <div class="hair"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="blush left"></div>
+      <div class="blush right"></div>
+      <div class="mouth"></div>
+    </div>
+    <div class="body"></div>
+    <div class="arm left"></div>
+    <div class="arm right"></div>
+    <div class="leg left"></div>
+    <div class="leg right"></div>
+  </div>
+  <p>Today, the whole universe has a reason to smile. 🌸</p>
+  <button onclick="goTo('wish')">Continue ♡</button>
+</section>
+
+<section class="scene" id="wish">
+  <div class="stars" id="stars3"></div>
+  <p>Meanwhile, somewhere under the stars...</p>
+  <div style="display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap">
+    <div class="character boy">
+      <div class="head">
+        <div class="hair"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="blush left"></div>
+        <div class="blush right"></div>
+        <div class="mouth"></div>
+      </div>
+      <div class="body"></div>
+      <div class="arm left"></div>
+      <div class="arm right"></div>
+      <div class="leg left"></div>
+      <div class="leg right"></div>
+    </div>
+    <div class="dialogue">
+      <p id="dialogueText" style="margin:0">Umm... I have something to tell you.</p>
+    </div>
+  </div>
+  <button onclick="nextDialogue()">What is it? 👀</button>
+</section>
+
+<section class="scene" id="final">
+  <div class="stars" id="stars4"></div>
+  <div class="web" id="web"></div>
+  <div class="hero" id="hero">🕸️🦸🏻‍♂️</div>
+  <h1>HAPPY BIRTHDAY!</h1>
+  <h1 class="name" style="font-size:clamp(2.4rem,8vw,4rem)">Tanushka 🎂</h1>
+  <p>One last surprise is waiting for you...</p>
+  <div class="gift" onclick="openGift()">🎁</div>
+  <p class="small">Tap the gift to open your surprise!</p>
+
+  <div id="surpriseText">
+    <h1 style="font-size:clamp(1.8rem,6vw,3rem)">✨ Your Day, Your Magic ✨</h1>
+    <p>
+      May your life be filled with beautiful moments,
+      unexpected happiness, endless laughter, and dreams
+      that come true. Keep shining, Tanushka! 🌷
+    </p>
+    <p>Today is all about YOU. 💗</p>
+    <a class="button" id="customLink" href="#" target="_blank" rel="noopener">Your Special Surprise 💌</a>
+    <button onclick="celebrate()">More Magic! 🎉</button>
+  </div>
+  <div class="confetti" id="confetti"></div>
+</section>
+
+<script>
+/* CUSTOMIZE THIS:
+   Paste your own website, photo album, song, or video link here.
+*/
+const SPECIAL_LINK = "";
+
+function createStars(id, count = 55) {
+  const box = document.getElementById(id);
+  for (let i = 0; i < count; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.textContent = Math.random() > .5 ? "✦" : "·";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.fontSize = (8 + Math.random() * 17) + "px";
+    star.style.animationDelay = Math.random() * 2 + "s";
+    box.appendChild(star);
+  }
+}
+
+["stars","stars2","stars3","stars4"].forEach(id => createStars(id));
+
+function goTo(id) {
+  document.querySelectorAll(".scene").forEach(scene => scene.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+
+  if (id === "final") {
+    document.getElementById("hero").classList.add("fly");
+    document.getElementById("web").classList.add("fly");
+    celebrate();
+  }
+}
+
+let dialogueIndex = 0;
+const lines = [
+  "Umm... I have something to tell you.",
+  "I was waiting for the right moment...",
+  "So, here it is. Ready? 💗",
+  "HAPPY BIRTHDAY, TANUSHKA! 🎂✨"
+];
+
+function nextDialogue() {
+  dialogueIndex++;
+  if (dialogueIndex < lines.length) {
+    document.getElementById("dialogueText").textContent = lines[dialogueIndex];
+  } else {
+    goTo("final");
+  }
+}
+
+function openGift() {
+  document.querySelector(".gift").textContent = "💝";
+  document.getElementById("surpriseText").classList.add("show");
+
+  if (SPECIAL_LINK.trim()) {
+    const link = document.getElementById("customLink");
+    link.href = SPECIAL_LINK.trim();
+    link.style.display = "inline-block";
+  }
+
+  celebrate();
+}
+
+function celebrate() {
+  const box = document.getElementById("confetti");
+  const symbols = ["💖","✨","🌸","⭐","🎉","💕","🎊"];
+  for (let i = 0; i < 35; i++) {
+    const piece = document.createElement("span");
+    piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    piece.style.left = Math.random() * 100 + "%";
+    piece.style.animationDelay = Math.random() * 1.5 + "s";
+    box.appendChild(piece);
+    setTimeout(() => piece.remove(), 5000);
+  }
+}
+</script>
+</body>
+      </html>
